@@ -13,13 +13,17 @@ export default class PC extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(640, 360, "mainScreen");
+    // Trazendo a tela principal e os outros elementos
+    this.add.image(640, 360, "mainScreen"); // Ajustando para o centro da tela
     this.add.image(640, 360, "PC_on");
     this.add.image(640, 360, "chatScreen");
     this.add.image(640, 360, "button");
 
-    const chatContainer = this.createScrollableChat(996, 312, 874, 290);
-    const playerInput = this.createTextArea(980, 499, 540, 58);
+    // Criando a área de chat (ajustando a posição conforme necessário)
+    const chatContainer = this.createScrollableChat(1016, 418, 1300, 390); // Posicionando no centro e ajustando tamanho
+
+    // Criando a área de input de texto (ajustando a posição também)
+    const playerInput = this.createTextArea(1000, 682, 800, 81); // Posição mais abaixo e com largura adequada
 
     // Dicionário de respostas predefinidas
     const respostas = {
