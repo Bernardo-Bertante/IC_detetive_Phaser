@@ -49,6 +49,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(), // Limpa a pasta build antes de gerar os novos arquivos
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/assets", to: "assets" }, // Copia os arquivos de assets
@@ -64,7 +65,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./index.html", // Certifique-se de que o HTML está na pasta src
-      filename: "index.html", // Nome do arquivo gerado
+      filename: "index.html", // Nome do arquivo gerado na pasta build
+      inject: "body", // Garante que o script será injetado corretamente no final do body
     }),
   ],
 };
