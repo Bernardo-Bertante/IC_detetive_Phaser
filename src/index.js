@@ -1,33 +1,25 @@
-import Phaser from './phaser-custom-sprite-loader';
+import Phaser from "phaser";
+import Game from "./scenes/game";
+import PC from "./scenes/pc";
 
 const config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    backgroundColor: '#2d2d2d',
-    scene: {
-        preload: preload,
-        create: create
-    }
+  type: Phaser.AUTO,
+  width: 1281,
+  height: 720,
+  scale: {
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  autoRound: false,
+  parent: "contenedor",
+  physics: {
+    default: "arcade",
+    arcade: {
+      gravity: { y: 0 },
+      debug: false,
+    },
+  },
+  backgroundColor: "#000000",
+  scene: [Game, PC],
 };
 
 const game = new Phaser.Game(config);
-
-function preload ()
-{
-    this.load.image('logo', 'assets/logo.png');
-}
-
-function create ()
-{
-    const logo = this.add.image(400, 150, 'logo');
-
-    this.tweens.add({
-        targets: logo,
-        y: 450,
-        duration: 2000,
-        ease: 'Power2',
-        yoyo: true,
-        loop: -1
-    });
-}
